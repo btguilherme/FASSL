@@ -1,0 +1,16 @@
+@relation ecoli-weka.filters.unsupervised.attribute.Remove-R1
+
+@attribute 0 numeric
+@attribute 1 numeric
+@attribute 2 numeric
+@attribute 3 numeric
+@attribute 4 numeric
+@attribute 5 numeric
+@attribute 6 numeric
+@attribute class {1,2,3,4,5,6,7,8}
+
+@data
+0.51,0.54,0.48,0.5,0.41,0.34,0.43,1
+0.4,0.5,0.48,0.5,0.45,0.39,0.47,1
+0.36,0.54,0.48,0.5,0.41,0.38,0.46,1
+0.51,0.5,0.48,0.5,0.46,0.32,0.35,1

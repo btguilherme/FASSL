@@ -41,15 +41,15 @@ public class FASSLSort {
         File[] filesZ2ii = IO.getFiles("_z2ii.arff", basesSavePath);
         
         for (File file : filesZ2i) {
-            System.err.print("Início da organização Z2i... ");
+            System.err.print("Sorting Z2'... ");
             sort(file, 0);
-            System.err.println("Fim");
+            System.err.println("End");
         }
         
         for (File file : filesZ2ii) {
-            System.err.print("Início da organização Z2ii... ");
+            System.err.print("Sorting Z2''... ");
             sort(file, 1);
-            System.err.println("Fim");
+            System.err.println("End");
         }
         
     }
@@ -61,7 +61,7 @@ public class FASSLSort {
 
         for (String method : sort) {
             
-            String save = System.getProperty("user.dir").split("EAL-Sort")[0].
+            String save = System.getProperty("user.dir").split("FASSL-Sort")[0].concat(SEP).
                 concat("txt-files").concat(SEP).concat(_file.getName().split(".arff")[0].concat("_").concat(method));
             
             switch(method){

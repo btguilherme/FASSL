@@ -117,7 +117,7 @@ public class FASSLSelectionClassification {
         Instances z2ii = new Instances(z2iiSingle);
         z2ii.delete();
         
-        String save = System.getProperty("user.dir").split("EAL-SelectionClassif"
+        String save = System.getProperty("user.dir").split("FASSL-SelectionClassif"
                 + "ication")[0].concat("txt-files").concat(SEP).concat(file.
                         getName().split("_z2")[0].concat("_").concat(method));
 
@@ -178,7 +178,7 @@ public class FASSLSelectionClassification {
         
         contIt++;
         
-        String save = System.getProperty("user.dir").split("EAL-SelectionClassif"
+        String save = System.getProperty("user.dir").split("FASSL-SelectionClassif"
                 + "ication")[0].concat("txt-files").concat(SEP).concat(ml.
                         getFileName().split("_z2")[0].concat("_").concat(method));
         
@@ -221,7 +221,7 @@ public class FASSLSelectionClassification {
         Instances z2ii = new Instances(z2iiMultiple[0]);
         z2ii.delete();
         
-        String save = System.getProperty("user.dir").split("EAL-SelectionClassif"
+        String save = System.getProperty("user.dir").split("FASSL-SelectionClassif"
                 + "ication")[0].concat("txt-files").concat(SEP).concat(ml.
                         getFileName().split("_z2")[0].concat("_").concat(method));
         
@@ -255,7 +255,7 @@ public class FASSLSelectionClassification {
         
         for (String classifier : classifiers) {
             
-            System.err.print("Aplicando o classificador " + classifier + "... ");
+            System.err.print("Applying classifier " + classifier + "... ");
             
             switch (classifier) {
                 //supervised
@@ -298,7 +298,7 @@ public class FASSLSelectionClassification {
                     break;
             }
             
-            System.err.println("Fim");
+            System.err.println("End");
         }
     }
 

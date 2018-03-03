@@ -26,7 +26,7 @@ public class FASSLInformation {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-        String txtFilesPath = System.getProperty("user.dir").split("EAL-Informat"
+        String txtFilesPath = System.getProperty("user.dir").split("FASSL-Informat"
                 + "ion")[0].concat("txt-files").concat(SEP);
         
         File[] txtFiles = IO.getFiles("txt", txtFilesPath);

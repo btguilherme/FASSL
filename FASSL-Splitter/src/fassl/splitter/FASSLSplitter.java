@@ -35,7 +35,7 @@ public class FASSLSplitter {
         baseSavePath = rp.getBasesSavePath();
         
         for (int i = 0; i < nSplits; i++) {
-            System.err.print("Início do split #"+(i+1)+"... ");
+            System.err.print("Split #"+(i+1)+" started... ");
             
             String uniqueID = UUID.randomUUID().toString();
             
@@ -63,7 +63,7 @@ public class FASSLSplitter {
             IO.save(z2ii, pathZ2ii);
             IO.save(z3, pathZ3);
             
-            System.err.println("Fim");
+            System.err.println("End");
         }
         
     }
