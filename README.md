@@ -23,21 +23,21 @@ In the `Clone into` space, you should specify a destination folder (where the pr
 
 All the configuration is made in the `settings.properties` file. Next is described what each keyword means:
 
-**`x-num-classes`**: In the selection of the most informative samples stage, it is selected from the learning set the same quantity of classes of the dataset have multiplied by `x-num-classes`. So, if a dataset presents 4 classes and `x-num-classes` is equals 2, then 8 samples will be selected in each iteration learning.
+- **`x-num-classes`**: In the selection of the most informative samples stage, it is selected from the learning set the same quantity of classes of the dataset have multiplied by `x-num-classes`. So, if a dataset presents 4 classes and `x-num-classes` is equals 2, then 8 samples will be selected in each iteration learning.
 
-**`bases-save-path`**: The location where the splited files are in.
+- **`bases-save-path`**: The location where the splited files are in.
 
-**`splits-sorted`**: The location where the splited and sorted files are in.
+- **`splits-sorted`**: The location where the splited and sorted files are in.
 
-**`arff-path`**: The location where the original dataset file are in. The file has to be in ARFF format.
+- **`arff-path`**: The location where the original dataset file are in. The file has to be in ARFF format.
 
-**`num-splits`**: The number of random splits will be made in the original dataset.
+- **`num-splits`**: The number of random splits will be made in the original dataset.
 
-**`pct`**: Percentage of the original dataset that will be used as learning set. (values between `0` and `1`). `1 - pct` equals to the test set.
+- **`pct`**: Percentage of the original dataset that will be used as learning set. (values between `0` and `1`). `1 - pct` equals to the test set.
 
-**`sort`**: The active learning method to be apply (case sensitive; for multiple methods, *blank space* between the techniques is required).
+- **`sort`**: The active learning method to be apply (case sensitive; for multiple methods, *blank space* between the techniques is required).
 
-**`classifier`**: The classifier to be used (case sensitive; for multiple classifiers, *blank space* between them is required).
+- **`classifier`**: The classifier to be used (case sensitive; for multiple classifiers, *blank space* between them is required).
 
 
 ### Basic usage
