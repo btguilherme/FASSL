@@ -1,15 +1,15 @@
 # Framework of Active Semi-Supervised Learning
-##Motivation
+## Motivation
 
 Due to databases have continuously grown, efforts have been performed in the attempt to solve the problem related to the large amount of unlabeled data in disproportion to the scarcity of labeled data. Another important issue is related to the tradeoff between the difficulty in obtaining annotations provided by a specialist and the need for a significant amount of annotated data in order to train and obtain a robust classifier. Active learning techniques jointly with semi-supervised learning are interesting in this context, since a smaller number of more informative samples previously selected (by the active learning strategy) and labeled by a specialist can propagate the labels to a set of unlabeled data (through the semi-supervised learning strategy). However, most of the literature works neglects the need for interactive response times that can be required by certain real applications. 
 
-##Results
+## Results
 
 We propose a more effective and efficient active semi-supervised learning framework, including a new active learning strategy for biological context. An extensive experimental evaluation was performed, comparing our proposals with state-of-the-art works and different supervised and semi-supervised classifiers. From the obtained results we can observe the benefits of our proposal, which allows the classifier achieve higher acuracies more quickly with a reduced number of annotated samples. The selection criterion adopted by our learning strategy, based on diversity and uncertainty, enables the prioritization of the most informative boundary samples, minimizing the specialist annotation effort and the learning cycle.
 
-##How to use it
+## How to use it
 
-###Cloning the project
+### Cloning the project
 
 First of all, you will need a platform to run the code. We recommend the **Netbeans IDE** (*https://netbeans.org/downloads/*) for open the project e run the tasks (the Java SE version is enough to run the project).
 
@@ -19,7 +19,7 @@ In the "Repository URL" blank space, put the URL: https://github.com/btguilherme
 
 In the `Clone into` space, you should specify a destination folder (where the project will be cloned). Click `Finish`.
 
-###Configuring the code execution
+### Configuring the code execution
 
 All the configuration is made in the `settings.properties` file. Next is described what each keyword means:
 
@@ -40,7 +40,7 @@ All the configuration is made in the `settings.properties` file. Next is describ
 **`classifier`**: The classifier to be used (case sensitive; for multiple classifiers, *blank space* between them is required).
 
 
-###Basic usage
+### Basic usage
 
 1. Run `FASSL-Splitter` to split the dataset into Z2', Z2'' and Z3. Just run the file `FASSLSplitter.java` in `fassl.splitter` package. The splited files will be stored at *../FASSL/FASSL-Splitter/arff-files*. Each split will be identify by a hash code, concatenated in the beginning of the file name.
 
@@ -53,6 +53,6 @@ All the configuration is made in the `settings.properties` file. Next is describ
 If you already have splited files or even organized files by others active learning techniques, you can jump steps. Just put your files at the corresponding folder (i.e. sorted files at *../FASSL/FASSL-Sort/arff-files-sorted*).
 
 
-##Contact
+## Contact
 
 E-mail to [Guilherme Camargo](mailto:gcamargo@alunos.utfpr.edu.br).
