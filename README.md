@@ -42,13 +42,17 @@ All the configuration is made in the `settings.properties` file. Next is describ
 
 ### Basic usage
 
+An option would be to execute the `FASSL-Main` program, which will execute the entire learning process of the classifier, from splitting the dataset to obtaining the information.
+
+If you already have, e.g. splitted files, you can run each program separately:
+
 1. Run `FASSL-Splitter` to split the dataset into Z2', Z2'' and Z3. Just run the file `FASSLSplitter.java` in `fassl.splitter` package. The splited files will be stored at *../FASSL/FASSL-Splitter/arff-files*. Each split will be identify by a hash code, concatenated in the beginning of the file name.
 
 2. Since the split step is done, you are good to run `FASSL-Sort` project. Just run the file `FASSLSort.java` in `fassl.sort` package. The sorted files will be stored at *../FASSL/FASSL-Sort/arff-files-sorted*, and the sorting time for each *.arff* file will be stored at *../FASSL/txt-files*.
 
-3. After Step 2, you have to open the project named `FASSL-SelectionClassification`. Just run the file `FASSLSelectionClassification.java` in `fassl.main package`. The samples used by each iteration of learning will be stored at *../FASSL/FASSL-SelectionClassification/arff-files-iterations*, and the measurements (i.e. accuracy, f-measure, precision, recall and ROC) will be stored at *../FASSL/txt-files*.
+3. After Step 2, you have to open the project named `FASSL-SelectionClassification`. Just run the file `FASSLSelectionClassification.java` in `fassl.main package`. The samples used by each iteration of learning will be stored at *../FASSL/FASSL-SelectionClassification/arff-files-iterations*, and the measurements (i.e. accuracy, f-measure, precision, recall, ROC, kappa, sensibility, specifity; and train, test and AL method application times) will be stored at *../FASSL/txt-files*.
 
-4. Then, to get the average and standard deviation of the measures, open the `FASSL-Information` project. Just run the file `FASSLInformation.java` in `fassl.information` package. The *.dat* files will be generated with iteration number, accuracy and standard deviation, and stored at *../FASSL/dat-files*.
+4. Then, to get the average and standard deviation of the measures, open the `FASSL-Information` project. Just run the file `FASSLInformation.java` in `fassl.information` package. The *.dat* files will be generated with iteration number, accuracy, standard deviation and interquartile range, and stored at *../FASSL/dat-files*.
 
 If you already have splited files or even organized files by others active learning techniques, you can jump steps. Just put your files at the corresponding folder (i.e. sorted files at *../FASSL/FASSL-Sort/arff-files-sorted*).
 

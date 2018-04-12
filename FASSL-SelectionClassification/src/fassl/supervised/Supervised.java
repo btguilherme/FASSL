@@ -7,6 +7,8 @@ package fassl.supervised;
 
 import fassl.utils.IO;
 import fassl.utils.Timer;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
@@ -21,13 +23,18 @@ public class Supervised implements ISupervised{
     protected final Instances z2i;
     protected final Instances z3;
     protected Classifier classifier;
-    protected double acc;
-    protected double fmeasure;
+    protected Evaluation eval;
     protected final String savePath;
     protected final boolean firstIteration;
+    protected double acc;
     protected double precision;
     protected double recall;
+    protected double fmeasure;
     protected double roc;
+    protected double kappa;
+    protected double sensibility;
+    protected double specificity;
+    protected double nKnownClasses;
 
     public Supervised(Instances z2i, Instances z3, String savePath, 
             boolean firstIteration) throws Exception {
@@ -50,6 +57,8 @@ public class Supervised implements ISupervised{
         classify();
         String testTime = String.valueOf(timer.getTime());
         
+        statistics();
+        
         String classifierType = getClass().getSimpleName();
         
         if(firstIteration){
@@ -61,6 +70,10 @@ public class Supervised implements ISupervised{
             IO.save("#" + uuid, savePath + "_recall_" + classifierType + ".txt");
             IO.save("#" + uuid, savePath + "_fmeasure_" + classifierType + ".txt");
             IO.save("#" + uuid, savePath + "_roc_" + classifierType + ".txt");
+            IO.save("#" + uuid, savePath + "_kappa_" + classifierType + ".txt");
+            IO.save("#" + uuid, savePath + "_sensibility_" + classifierType + ".txt");
+            IO.save("#" + uuid, savePath + "_specificity_" + classifierType + ".txt");
+            IO.save("#" + uuid, savePath + "_nKnownClasses_" + classifierType + ".txt");
         }
         
         IO.saveConcat(String.valueOf(acc), savePath + "_acc_" + classifierType + ".txt");
@@ -70,6 +83,10 @@ public class Supervised implements ISupervised{
         IO.saveConcat(String.valueOf(recall), savePath + "_recall_" + classifierType + ".txt");
         IO.saveConcat(String.valueOf(fmeasure), savePath + "_fmeasure_" + classifierType + ".txt");
         IO.saveConcat(String.valueOf(roc), savePath + "_roc_" + classifierType + ".txt");
+        IO.saveConcat(String.valueOf(kappa), savePath + "_kappa_" + classifierType + ".txt");
+        IO.saveConcat(String.valueOf(sensibility), savePath + "_sensibility_" + classifierType + ".txt");
+        IO.saveConcat(String.valueOf(specificity), savePath + "_specificity_" + classifierType + ".txt");
+        IO.saveConcat(String.valueOf(nKnownClasses), savePath + "_nKnownClasses_" + classifierType + ".txt");
     }
     
     @Override
@@ -79,13 +96,32 @@ public class Supervised implements ISupervised{
     
     @Override
     public void classify() throws Exception{
-        Evaluation eval = new Evaluation(z2i);
+        eval = new Evaluation(z2i);
         eval.evaluateModel(classifier, z3);
+    }
+    
+    @Override
+    public void statistics() {
         acc = eval.pctCorrect();
         precision = eval.weightedPrecision();
         recall = eval.weightedRecall();
         fmeasure = eval.weightedFMeasure();
         roc = eval.weightedAreaUnderROC();
+        kappa = eval.kappa();
+        
+        double fp = eval.weightedFalsePositiveRate();
+        double fn = eval.weightedFalseNegativeRate();
+        double tp = eval.weightedTruePositiveRate();
+        double tn = eval.weightedTrueNegativeRate();
+        
+        sensibility = (double)100 * tp / (tp + fn);
+        specificity = (double)100 * tn / (tn + fp);
+        
+        Set<String> knownClasses = new HashSet<>();
+        z2i.forEach((instance) -> {
+            knownClasses.add(z2i.classAttribute().value((int) instance.classValue()));
+        });
+        nKnownClasses = knownClasses.size();
         
         //With high precision but low recall, you classifier is extremely accurate, 
         //but it misses a significant number of instances that are difficult to classify. This is not very useful.
@@ -93,6 +129,6 @@ public class Supervised implements ISupervised{
     
     public Classifier getClassifier() {
         return classifier;
-    }    
+    }
     
 }

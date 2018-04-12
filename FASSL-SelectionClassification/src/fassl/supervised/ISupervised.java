@@ -10,9 +10,13 @@ package fassl.supervised;
  * @author guilherme
  */
 public interface ISupervised {
-    
+
     void makeItHappen() throws Exception;
+
     void train() throws Exception;
+
     void classify() throws Exception;
     
+    void statistics();
+
 }

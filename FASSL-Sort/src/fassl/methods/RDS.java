@@ -5,8 +5,10 @@
  */
 package fassl.methods;
 
+import fassl.utils.Enumerations;
 import fassl.utils.IO;
 import fassl.utils.MapUtil;
+import fassl.utils.SystemUserDir;
 import fassl.utils.Timer;
 import java.io.File;
 import java.io.IOException;
@@ -107,10 +109,11 @@ public class RDS extends AFC{
         
         for (int i = 0; i < listas.length; i++) {
         
-            saveArffPath = System.getProperty("user.dir").concat(File.separator).
-                    concat("arff-files-sorted").concat(File.separator).
-                    concat(fileName).concat("_").concat(method).
-                    concat("_lista_").concat(String.valueOf(i)).concat(".arff");
+            saveArffPath = SystemUserDir.newPath(Enumerations.PROGRSORT.value).
+                    concat(Enumerations.SEP.value).concat("arff-files-sorted").
+                    concat(Enumerations.SEP.value).concat(fileName).concat("_").
+                    concat(method).concat("_lista_").concat(String.valueOf(i)).
+                    concat(".arff");
             
             IO.save(listas[i], saveArffPath);   
         }

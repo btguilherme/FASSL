@@ -5,19 +5,21 @@
  */
 package fassl.main;
 
-import fassl.unsupervised.CollectiveWrapperOPF;
-import fassl.unsupervised.CollectiveWrapperSVM;
-import fassl.unsupervised.YATSISVM;
-import fassl.unsupervised.CollectiveWrapperRF;
-import fassl.unsupervised.YATSIRF;
-import fassl.unsupervised.YATSIOPF;
+import fassl.semisupervised.CollectiveWrapperOPF;
+import fassl.semisupervised.CollectiveWrapperSVM;
+import fassl.semisupervised.YATSISVM;
+import fassl.semisupervised.CollectiveWrapperRF;
+import fassl.semisupervised.YATSIRF;
+import fassl.semisupervised.YATSIOPF;
 import fassl.supervised.RF;
 import fassl.supervised.OPF;
 import fassl.supervised.SVM;
 import fassl.selection.MultipleLists;
 import fassl.selection.UniqueList;
+import fassl.utils.Enumerations;
 import fassl.utils.IO;
 import fassl.utils.ReadProperties;
+import fassl.utils.SystemUserDir;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
@@ -31,7 +33,6 @@ import weka.core.Instances;
  */
 public class FASSLSelectionClassification {
     
-    private static final String SEP = File.separator;
     private static String[] classifiers;
     private static int xNumClasses;
     private static Instances z2iSingle;
@@ -56,8 +57,8 @@ public class FASSLSelectionClassification {
         String splitsSortedPath = rp.getSplitsSorted();
         String methodsSort[] = rp.getSort();
         
-        savePath = System.getProperty("user.dir").concat(SEP).
-                concat("arff-files-iterations").concat(SEP);
+        savePath = SystemUserDir.newPath(Enumerations.PROGRSELECTION.value).concat(Enumerations.SEP.value).
+                concat("arff-files-iterations").concat(Enumerations.SEP.value);
         
         File[] files = IO.getFiles(".arff", splitsSortedPath);
         Set<String> uuids = new HashSet<>();
@@ -117,9 +118,10 @@ public class FASSLSelectionClassification {
         Instances z2ii = new Instances(z2iiSingle);
         z2ii.delete();
         
-        String save = System.getProperty("user.dir").split("FASSL-SelectionClassif"
-                + "ication")[0].concat("txt-files").concat(SEP).concat(file.
-                        getName().split("_z2")[0].concat("_").concat(method));
+        String save = SystemUserDir.newPath(Enumerations.PROGRSELECTION.value).
+                split(Enumerations.PROGRSELECTION.value)[0].concat("txt-files").
+                concat(Enumerations.SEP.value).concat(file.getName().
+                        split("_z2")[0].concat("_").concat(method));
 
         int contIt = 0;
         boolean firstIteration = true;
@@ -178,9 +180,10 @@ public class FASSLSelectionClassification {
         
         contIt++;
         
-        String save = System.getProperty("user.dir").split("FASSL-SelectionClassif"
-                + "ication")[0].concat("txt-files").concat(SEP).concat(ml.
-                        getFileName().split("_z2")[0].concat("_").concat(method));
+        String save = SystemUserDir.newPath(Enumerations.PROGRSELECTION.value).
+                split(Enumerations.PROGRSELECTION.value)[0].concat("txt-files").
+                concat(Enumerations.SEP.value).concat(ml.getFileName().
+                        split("_z2")[0].concat("_").concat(method));
         
         makesClassification(z2i, z2ii, save, true);
         
@@ -221,9 +224,10 @@ public class FASSLSelectionClassification {
         Instances z2ii = new Instances(z2iiMultiple[0]);
         z2ii.delete();
         
-        String save = System.getProperty("user.dir").split("FASSL-SelectionClassif"
-                + "ication")[0].concat("txt-files").concat(SEP).concat(ml.
-                        getFileName().split("_z2")[0].concat("_").concat(method));
+        String save = SystemUserDir.newPath(Enumerations.PROGRSELECTION.value).
+                split(Enumerations.PROGRSELECTION.value)[0].concat("txt-files").
+                concat(Enumerations.SEP.value).concat(ml.getFileName().
+                        split("_z2")[0].concat("_").concat(method));
         
         int contIt = 0;
         boolean firstIteration = true;

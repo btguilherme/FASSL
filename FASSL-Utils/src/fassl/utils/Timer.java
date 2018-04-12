@@ -91,7 +91,7 @@ public class Timer
 //                double c = Math.sqrt( b );
 //            }
 
-            Thread.sleep(1*1470);
+            Thread.sleep(2000);
             
             //min:seg.milliseg
             //0:01.000
@@ -99,5 +99,6 @@ public class Timer
             String out = String.valueOf(timer.getTime());
             
             System.out.println( out );
+            System.out.println(timer.toString());
 	}
 }

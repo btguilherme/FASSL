@@ -10,11 +10,13 @@ import fassl.methods.Clu;
 import fassl.methods.RDS;
 import fassl.methods.RDBS;
 import fassl.methods.Rand;
+import fassl.utils.Enumerations;
 import fassl.utils.ReadProperties;
 import java.io.File;
 import java.io.IOException;
 import weka.core.Instances;
 import fassl.utils.IO;
+import fassl.utils.SystemUserDir;
 
 /**
  *
@@ -27,7 +29,6 @@ public class FASSLSort {
      */
     private static String[] sort;
     private static int xNumClasses;
-    private static final String SEP = File.separator;
     
     public static void main(String[] args) throws IOException, Exception {
         
@@ -61,8 +62,10 @@ public class FASSLSort {
 
         for (String method : sort) {
             
-            String save = System.getProperty("user.dir").split("FASSL-Sort")[0].concat(SEP).
-                concat("txt-files").concat(SEP).concat(_file.getName().split(".arff")[0].concat("_").concat(method));
+            String save = SystemUserDir.newPath(Enumerations.PROGRSORT.value).
+                    split(Enumerations.PROGRSORT.value)[0].concat(Enumerations.SEP.value).
+                    concat("txt-files").concat(Enumerations.SEP.value).concat(_file.getName().
+                            split(".arff")[0].concat("_").concat(method));
             
             switch(method){
                 case "AFC":

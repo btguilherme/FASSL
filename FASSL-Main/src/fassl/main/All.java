@@ -5,6 +5,11 @@
  */
 package fassl.main;
 
+import fassl.information.FASSLInformation;
+import fassl.sort.FASSLSort;
+import fassl.splitter.FASSLSplitter;
+import fassl.utils.*;
+
 /**
  *
  * @author guilherme
@@ -12,10 +17,19 @@ package fassl.main;
 public class All {
 
     /**
+     * This program will perform all stages of the classifier learning process, 
+     * from the data set split to the information retrieval.
+     * 
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception {
+        
+        FASSLSplitter.main(args);
+        FASSLSort.main(args);
+        FASSLSelectionClassification.main(args);
+        FASSLInformation.main(args);
+
     }
-    
+
 }

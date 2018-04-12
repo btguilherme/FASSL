@@ -5,11 +5,12 @@
  */
 package fassl.methods;
 
+import fassl.utils.Enumerations;
 import fassl.utils.IO;
 import fassl.utils.InstancesManipulation;
 import fassl.utils.MapUtil;
+import fassl.utils.SystemUserDir;
 import fassl.utils.Timer;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,9 +83,9 @@ public class AFC {
 
     protected void save() throws IOException {
         
-        String saveArffPath = System.getProperty("user.dir").
-                    concat(File.separator).concat("arff-files-sorted").
-                    concat(File.separator).concat(fileName).concat("_").
+        String saveArffPath = SystemUserDir.newPath(Enumerations.PROGRSORT.value).
+                    concat(Enumerations.SEP.value).concat("arff-files-sorted").
+                    concat(Enumerations.SEP.value).concat(fileName).concat("_").
                     concat(method).concat(".arff");
         
         IO.save(sorted, saveArffPath);
