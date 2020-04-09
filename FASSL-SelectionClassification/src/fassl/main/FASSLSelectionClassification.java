@@ -72,6 +72,7 @@ public class FASSLSelectionClassification {
                 for (int i = 0; i < files.length; i++) {
                     switch(methodSort){
                         case "AFC":
+                        case "MSTBE":
                         case "Rand":
                             if(files[i].getName().startsWith(uuid) && files[i].
                                     getName().contains(methodSort) && files[i].

@@ -7,16 +7,17 @@ package fassl.sort;
 
 import fassl.methods.AFC;
 import fassl.methods.Clu;
-import fassl.methods.RDS;
+import fassl.methods.MSTBE;
 import fassl.methods.RDBS;
+import fassl.methods.RDS;
 import fassl.methods.Rand;
 import fassl.utils.Enumerations;
+import fassl.utils.IO;
 import fassl.utils.ReadProperties;
+import fassl.utils.SystemUserDir;
 import java.io.File;
 import java.io.IOException;
 import weka.core.Instances;
-import fassl.utils.IO;
-import fassl.utils.SystemUserDir;
 
 /**
  *
@@ -63,7 +64,7 @@ public class FASSLSort {
         for (String method : sort) {
             
             String save = SystemUserDir.newPath(Enumerations.PROGRSORT.value).
-                    split(Enumerations.PROGRSORT.value)[0].concat(Enumerations.SEP.value).
+                    split(Enumerations.PROGRSORT.value)[0].
                     concat("txt-files").concat(Enumerations.SEP.value).concat(_file.getName().
                             split(".arff")[0].concat("_").concat(method));
             
@@ -82,6 +83,10 @@ public class FASSLSort {
                     break;
                 case "RDS":
                     new RDS(file, file.numClasses() * xNumClasses,
+                            _file.getName().split(".arff")[0], method, save);
+                    break;
+                case "MSTBE":
+                    new MSTBE(file, file.numClasses() * xNumClasses,
                             _file.getName().split(".arff")[0], method, save);
                     break;
                 case "Rand":

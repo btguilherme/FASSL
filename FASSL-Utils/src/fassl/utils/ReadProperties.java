@@ -5,6 +5,7 @@
  */
 package fassl.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -31,12 +32,13 @@ public final class ReadProperties {
     
     public void read() throws IOException{
         
-        String temp[] = System.getProperty("user.dir").split("/");
-        String propPath = "";
-        for (int i = 0; i < temp.length - 1; i++) {
-            propPath = propPath.concat(temp[i]);
-            propPath = propPath.concat("/");
-        }
+//        String temp[] = System.getProperty("user.dir").split("/");
+        File f = new File(System.getProperty("user.dir"));
+        String propPath = f.getParent().concat((Enumerations.SEP.value));
+//        for (int i = 0; i < temp.length - 1; i++) {
+//            propPath = propPath.concat(temp[i]);
+//            propPath = propPath.concat("/");
+//        }
         
         Properties props = new Properties();
         FileInputStream file

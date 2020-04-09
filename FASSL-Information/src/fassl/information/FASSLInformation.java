@@ -34,7 +34,7 @@ public class FASSLInformation {
 
         File[] txtFiles = IO.getFiles("txt", txtFilesPath);
 
-        String[] sortMethods = {"AFC", "Clu", "RDBS", "RDS", "Rand"};
+        String[] sortMethods = {"AFC", "Clu", "RDBS", "RDS", "MSTBE", "Rand"};
         String[] classifiers = {"_SVM", "_RF", "_OPF", "_YATSISVM", "_YATSIRF",
             "_YATSIOPF", "_CollectiveWrapperSVM", "_CollectiveWrapperRF",
             "_CollectiveWrapperOPF"};

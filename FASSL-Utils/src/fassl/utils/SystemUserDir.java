@@ -16,13 +16,16 @@ public class SystemUserDir {
     private static final String SEP = File.separator;
     
     public static String newPath(String progr) {
-        
-        String[] aux = System.getProperty("user.dir").split(SEP);
-        String newString = "";
-        for (int i = 0; i < aux.length - 1; i++) {
-            newString = newString.concat(aux[i]).concat(SEP);
-        }
-        return newString.concat(progr);
+        File f = new File(System.getProperty("user.dir"));
+        return f.getAbsolutePath();
+//        String[] aux = System.getProperty("user.dir").split(SEP);
+//        
+//        
+//        String newString = "";
+//        for (int i = 0; i < aux.length - 1; i++) {
+//            newString = newString.concat(aux[i]).concat(SEP);
+//        }
+//        return newString.concat(progr);
     }
 
 }

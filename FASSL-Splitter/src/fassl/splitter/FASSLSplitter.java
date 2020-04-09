@@ -7,6 +7,7 @@ package fassl.splitter;
 
 import fassl.utils.IO;
 import fassl.utils.ReadProperties;
+import java.io.File;
 import java.util.UUID;
 import weka.core.Instances;
 
@@ -54,10 +55,11 @@ public class FASSLSplitter {
             Instances z2i = split.getZ2i();
             Instances z2ii = split.getZ2ii();
             Instances z3 = split.getZ3();
+           
             
-            String pathZ2i = baseSavePath + uniqueID + "@" + fileName + "_split_"+i+"_z2i.arff";
-            String pathZ2ii = baseSavePath + uniqueID + "@" + fileName + "_split_"+i+"_z2ii.arff";
-            String pathZ3 = baseSavePath + uniqueID + "@" + fileName + "_split_"+i+"_z3.arff";
+            String pathZ2i = baseSavePath + uniqueID + "@" + new File(fileName).getName() + "_split_"+i+"_z2i.arff";
+            String pathZ2ii = baseSavePath + uniqueID + "@" + new File(fileName).getName() + "_split_"+i+"_z2ii.arff";
+            String pathZ3 = baseSavePath + uniqueID + "@" + new File(fileName).getName() + "_split_"+i+"_z3.arff";
 
             IO.save(z2i, pathZ2i);
             IO.save(z2ii, pathZ2ii);
