@@ -19,6 +19,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import weka.core.EuclideanDistance;
+import weka.core.Instance;
 import weka.core.Instances;
 
 /**
@@ -114,8 +115,9 @@ public class RDS extends AFC{
                     concat(Enumerations.SEP.value).concat(fileName).concat("_").
                     concat(method).concat("_lista_").concat(String.valueOf(i)).
                     concat(".arff");
-            
-            IO.save(listas[i], saveArffPath);   
+            if(listas[i] != null){
+                IO.save(listas[i], saveArffPath);   
+            }
         }
     }
     

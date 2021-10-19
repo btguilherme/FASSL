@@ -4,3 +4,6 @@
 /FASSL-SelectionClassification/build/
 /FASSL-Information/build/
 /FASSL-Main/build/
+/FASSL-SelectionClassification/dist/
+/FASSL-Splitter/dist/
+/FASSL-Information/dist/

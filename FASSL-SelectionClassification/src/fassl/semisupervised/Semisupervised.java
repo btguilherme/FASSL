@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.UUID;
 import weka.classifiers.Classifier;
 import weka.classifiers.CollectiveEvaluation;
+import weka.classifiers.collective.CollectiveRandomizableSingleClassifierEnhancer;
 import weka.core.Instances;
 
 /**
@@ -23,7 +24,7 @@ public class Semisupervised implements ISemisupervised{
     protected final Instances z2i;
     protected final Instances z2ii;
     protected final Instances z3;
-    protected Classifier classifier;
+    protected CollectiveRandomizableSingleClassifierEnhancer classifier;
     protected CollectiveEvaluation eval;
     protected double acc;
     protected final boolean firstIteration;

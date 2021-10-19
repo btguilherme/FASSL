@@ -7,6 +7,7 @@ package fassl.semisupervised;
 
 import weka.classifiers.collective.meta.YATSI;
 import weka.classifiers.functions.SMO;
+import weka.core.Instance;
 import weka.core.Instances;
 
 /**
@@ -27,9 +28,12 @@ public class YATSISVM extends Semisupervised{
         yatsi.setClassifier(new SMO());
         yatsi.setKNN(10);
         yatsi.setNoWeights(true);
+        for (Instance instance : z3) {
+            z2ii.add(instance);
+        }
         yatsi.buildClassifier(z2i, z2ii);
         
-        classifier = yatsi.getClassifier();
+        classifier = yatsi;
     }
     
     

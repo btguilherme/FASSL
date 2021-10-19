@@ -7,6 +7,7 @@ package fassl.semisupervised;
 
 import weka.classifiers.collective.meta.CollectiveWrapper;
 import weka.classifiers.opf.OPF;
+import weka.core.Instance;
 import weka.core.Instances;
 
 /**
@@ -25,9 +26,12 @@ public class CollectiveWrapperOPF extends Semisupervised{
     public void train() throws Exception {
         CollectiveWrapper wrapper = new CollectiveWrapper();
         wrapper.setClassifier(new OPF());
+        for (Instance instance : z3) {
+            z2ii.add(instance);
+        }
         wrapper.buildClassifier(z2i, z2ii);
         
-        classifier = wrapper.getClassifier();
+        classifier = wrapper;
     }
     
 }

@@ -5,17 +5,17 @@
  */
 package fassl.main;
 
-import fassl.semisupervised.CollectiveWrapperOPF;
-import fassl.semisupervised.CollectiveWrapperSVM;
-import fassl.semisupervised.YATSISVM;
-import fassl.semisupervised.CollectiveWrapperRF;
-import fassl.semisupervised.YATSIRF;
-import fassl.semisupervised.YATSIOPF;
-import fassl.supervised.RF;
-import fassl.supervised.OPF;
-import fassl.supervised.SVM;
 import fassl.selection.MultipleLists;
 import fassl.selection.UniqueList;
+import fassl.semisupervised.CollectiveWrapperOPF;
+import fassl.semisupervised.CollectiveWrapperRF;
+import fassl.semisupervised.CollectiveWrapperSVM;
+import fassl.semisupervised.YATSIOPF;
+import fassl.semisupervised.YATSIRF;
+import fassl.semisupervised.YATSISVM;
+import fassl.supervised.OPF;
+import fassl.supervised.RF;
+import fassl.supervised.SVM;
 import fassl.utils.Enumerations;
 import fassl.utils.IO;
 import fassl.utils.ReadProperties;
@@ -219,7 +219,7 @@ public class FASSLSelectionClassification {
         z2iMultiple = ml.getZ2iMultiple();
         z2iiMultiple = ml.getZ2iiMultiple();
         z3 = ml.getZ3();
-        
+
         Instances z2i = new Instances(z2iMultiple[0]);
         z2i.delete();
         Instances z2ii = new Instances(z2iiMultiple[0]);

@@ -7,6 +7,7 @@ package fassl.semisupervised;
 
 import weka.classifiers.collective.meta.YATSI;
 import weka.classifiers.trees.RandomForest;
+import weka.core.Instance;
 import weka.core.Instances;
 
 /**
@@ -27,9 +28,12 @@ public class YATSIRF extends Semisupervised{
         yatsi.setClassifier(new RandomForest());
         yatsi.setKNN(10);
         yatsi.setNoWeights(true);
+        for (Instance instance : z3) {
+            z2ii.add(instance);
+        }
         yatsi.buildClassifier(z2i, z2ii);
         
-        classifier = yatsi.getClassifier();
+        classifier = yatsi;
     }
     
     

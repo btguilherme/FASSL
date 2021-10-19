@@ -49,7 +49,7 @@ public class FASSLInformation {
                         String name = txtFile.getName();
                         if (name.contains(mensuration) && name.contains(classifier)
                                 && name.contains(sortMethod)) {
-
+                            
                             f.add(txtFile);
                         }
                     }
